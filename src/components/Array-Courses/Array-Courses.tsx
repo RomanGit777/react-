@@ -11,7 +11,7 @@ export const ArrayCourses = () => {
                 <ArrayCourse key={i} course={course}>
 
                         Modules:
-                        {course.modules.map((module: string) => <li>{module}</li>)}
+                    {course.modules.map((module: string, inx: number) => <li key={inx}>{module}</li>)}
 
                 </ArrayCourse>)
             }
