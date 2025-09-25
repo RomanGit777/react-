@@ -12,7 +12,7 @@ export const ArrayCourse: FC<ArrayCourseProps> = ({course, children}) => {
         <div className='m-6'>
             <h4>Title: {course.title}</h4>
             <p>Month duration: {course.monthDuration}</p> <p>Hour duration: {course.hourDuration}</p>
-            <ul>{children}</ul>
+            <div>{children}</div>
         </div>
     );
 };
