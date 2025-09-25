@@ -8,12 +8,9 @@ export const ArrayCourses = () => {
             {
                 coursesArray.map((course, i) =>
                 <ArrayCourse key={i} course={course}>
-
-                <ul>
                     <li>
                         {course.modules}
                     </li>
-                </ul>
 
                 </ArrayCourse>)
             }

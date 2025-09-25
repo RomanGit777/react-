@@ -9,9 +9,10 @@ interface ArrayCourseProps {
 
 export const ArrayCourse: FC<ArrayCourseProps> = ({course, children}) => {
     return (
-        <div>
+        <div className='m-6'>
             <h4>Title: {course.title}</h4>
-            <p>Month duration: {course.monthDuration}</p> Hour duration:<p>{course.hourDuration}</p>
+            <p>Month duration: {course.monthDuration}</p> <p>Hour duration: {course.hourDuration}</p>
+            <ul>{children}</ul>
         </div>
     );
 };
