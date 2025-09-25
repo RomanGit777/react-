@@ -5,7 +5,7 @@ import type {ICourses} from "../../Models/Array-Courses-model.ts";
 
 export const ArrayCourses = () => {
     return (
-        <div>
+        <div className='container'>
             {
                 coursesArray.map((course: ICourses, i: number) =>
                 <ArrayCourse key={i} course={course}>

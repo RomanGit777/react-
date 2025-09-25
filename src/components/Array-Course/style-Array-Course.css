@@ -1,6 +1,10 @@
-div{
-    width: 250px;
-    color: white;
-    background-color: black;
-    margin-bottom: 10px;
+.info-box{
+        border: 1px solid #ccc;
+        padding: 12px;
+        flex: 1 1 250px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    background-color: rgba(119, 136, 153, 0.13);
+    color: #772424;
 }

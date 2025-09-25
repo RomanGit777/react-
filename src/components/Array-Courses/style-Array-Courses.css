@@ -1,0 +1,13 @@
+/* style-Array-Courses.css */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    justify-content: center;
+    align-items: stretch;
+    margin: 20px 20px;
+}
+li{
+    margin-left: 95px;
+    list-style: circle;
+}
