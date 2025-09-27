@@ -5,6 +5,6 @@ export const getUsers = async (): Promise<IUser[]> => {
         .then(res => res.json())
 }
 export const getUser = async (id:string): Promise<IUser> => {
-    return await fetch(import.meta.env.VITE_API_URL + '/' + id)
+    return await fetch(import.meta.env.VITE_API_URL + '/' + id )
         .then(res => res.json())
 }
