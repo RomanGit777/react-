@@ -6,13 +6,13 @@ type CommentPropsType = {
     comment: ICommentsModel
 }
 
-export const Comment:FC<CommentPropsType> = ({comment:{id,postId,name,email,body}}) => {
+export const Comment:FC<CommentPropsType> = ({comment:{id,postId,user,likes,body}}) => {
     return (
         <div className={'box'}>
             <p>Post ID: {postId}</p>
             <p>ID: {id}</p>
-            <p>name: {name}</p>
-            <p>Email: {email}</p>
+            <p>User: {user.id}  username: {user.username}  fullName: {user.fullName}</p>
+            <p>Likes: {likes}</p>
             <p>Body: {body}</p>
         </div>
     );
