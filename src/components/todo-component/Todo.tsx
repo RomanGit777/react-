@@ -5,10 +5,10 @@ interface TodoPropsType {
     todo: ITodoModel,
 }
 
-export const Todo: FC<TodoPropsType> = ({todo:{title,id,completed}}: TodoPropsType) => {
+export const Todo: FC<TodoPropsType> = ({todo:{todo,id,completed}}: TodoPropsType) => {
     return (
         <>
-            <div>ID: {id} Title: {title} Completed: {completed.toString()}</div>
+            <div>ID: {id} Title: {todo} Completed: {completed.toString()}</div>
         </>
     );
 };
