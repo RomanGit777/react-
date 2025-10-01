@@ -2,4 +2,8 @@
 .product-box{
     background-color: darkgrey;
     width: 49%;
+    border-radius: 10px;
+}
+img{
+    width: 150px;
 }
