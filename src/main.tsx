@@ -12,8 +12,14 @@ const router = createBrowserRouter([
             children:
                     [
                         {path: '/a', element: <APage/>},
-                        {path: '/b', element: <BPage/>},
-                        {path: '', element: <HomePage/>}
+                        {path: '', element: <HomePage/>},
+                        {path: '/b', element: <BPage/>, children:
+                                [
+                                    {path: '1', element: <div>1 content</div>},
+                                    {path: '2', element: <div>2 content</div>},
+                                    {path: '3', element: <div>3 content</div>}
+                                ]
+                        }
                     ]
     },
 
