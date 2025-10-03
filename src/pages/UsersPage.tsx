@@ -1,7 +1,9 @@
+import { Users } from "../components/users/Users";
+
 export const UsersPage = () => {
     return (
         <>
-            Users Page
+            <Users/>
         </>
     );
 };
