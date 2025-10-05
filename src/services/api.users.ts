@@ -1,9 +1,9 @@
 import type {IUser} from "../models/IUser.ts";
+import {urls} from "../constants/urls.ts";
 
-const baseUrl = 'https://jsonplaceholder.typicode.com';
 
 export const userService ={
     getUsers: async (): Promise<IUser[]> => {
-    return await fetch(baseUrl + '/users')
+    return await fetch(urls.users.allUsers)
         .then((res) => res.json())
 }}
