@@ -1,7 +1,12 @@
+import {useParams} from "react-router-dom";
+import {Posts} from "../components/Posts/Posts.tsx";
+
 export const PostsPage = () => {
+    const {userId} = useParams();
+
     return (
         <>
-            Posts Page
+            {userId && <Posts userId={userId} />}
         </>
-    );
-};
+    )
+}

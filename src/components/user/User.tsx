@@ -10,7 +10,7 @@ type UserProps = {
 export const User: FC<UserProps> = ({item}: UserProps) => {
     const navigate = useNavigate();
     const handleOnClick = () => {
-        navigate('details', {state: item})
+        navigate('posts/' + item.id, {state: item})
     }
     return (
         <div className="user-box">
