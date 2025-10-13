@@ -1,19 +1,22 @@
 import {useEffect, useState} from "react";
 import type {ICommentJSON} from "../models/ICommentJSON.ts";
+import {commentService} from "../services/api.ts";
+import {CommentJSONComponent} from "./CommentJSONComponent.tsx";
 
 export const CommentsJsonComponent = () => {
 
     const [comments, setComments] = useState<ICommentJSON[]>([]);
 
     useEffect(() => {
-        commentService.getComments().then(allComments) => setComments(allComments);
+        commentService.getCommentsJSON().then(allCommentsJSON =>
+        {setComments(allCommentsJSON)
+        })
     }, [])
 
 
     return (
         <div>
-
-            comments.map(comment => <CommentComponent key={} item={} />)
+            {comments.map(comment => <CommentJSONComponent key={comment.id} comment={comment}/>)}
         </div>
     );
 };
