@@ -12,7 +12,7 @@ export const CommentsJsonComponent = () => {
         {setComments(allCommentsJSON)
         })
     }, [])
-
+    if (!comments) return <div>Loading...</div>;
 
     return (
         <div>

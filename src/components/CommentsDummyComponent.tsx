@@ -11,7 +11,6 @@ export const CommentsDummyComponent = () => {
             setData(response);
         });
     }, []);
-
     if (!data) return <div>Loading...</div>;
 
     return (

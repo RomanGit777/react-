@@ -8,13 +8,17 @@ export const commentService = {
             .then(response => response.json())
     },
     getCommentsDummy: async () => {
-        const res = await fetch(urls.comments.allCommentsDummy);
-        return res.json();
-    },
+        return await fetch(urls.comments.allCommentsDummy)
+            .then(response => response.json())}
+}
 
+export const PostsService = {
     getPostsJSON: async (): Promise<IPostJSON[]> => {
         return await fetch(urls.posts.allPostsJSON)
-            .then(response => response.json())
+            .then(response => response.json());
     },
-
+    getPostsDummy: async () => {
+        return await fetch(urls.posts.allPostsDummy)
+            .then(response => response.json());
+    }
 }
