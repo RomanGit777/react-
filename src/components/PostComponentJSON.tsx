@@ -7,10 +7,10 @@ type TypePropPostsJSON = {
 export const PostComponentJSON: FC<TypePropPostsJSON> = ({post}) => {
     return (
         <div className={'m-3.5'}>
-            {post.id}
-            {post.userId}
-            {post.title}
-            {post.body}
+            <p>Post Id: {post.id}</p>
+            <p>User Id: {post.userId}</p>
+            <p>Title: {post.title}</p>
+            <p>Body: {post.body}</p>
         </div>
     );
 };
