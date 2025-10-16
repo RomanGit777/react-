@@ -1,5 +1,5 @@
 const baseUrlForJSON = 'https://jsonplaceholder.typicode.com';
-const baseUrlForDummy = ' https://dummyjson.com';
+const baseUrlForDummy = 'https://dummyjson.com';
 
 export const urls = {
     users: {
