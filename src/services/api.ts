@@ -28,5 +28,9 @@ export const userService = {
     getUserJSON: async ():Promise<IUsersJSON[]> => {
         return await fetch(urls.users.allUsersJSON)
             .then(response => response.json());
+    },
+    getUserDummy: async () => {
+        return await fetch(urls.users.allUsersDummy)
+            .then(response => response.json());
     }
 }
