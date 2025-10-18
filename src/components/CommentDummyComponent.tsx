@@ -16,8 +16,11 @@ export const CommentDummyComponent: FC<PropTypeDummyComment> = ({ comments }) =>
                     <p><b>ID:</b> {c.id}</p>
                     <p><b>Post ID:</b> {c.postId}</p>
                     <p><b>Body:</b> {c.body}</p>
-                    <p><b>User:</b> {c.user.fullName} ({c.user.username})</p>
                     <p><b>Likes:</b> {c.likes}</p>
+                    <p><b>User:</b></p>
+                    <p> {c.user.fullName} </p>
+                    <p>{c.user.username}</p>
+                    <p>{c.user.id}</p>
                     <hr />
                 </div>
             ))}
