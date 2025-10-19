@@ -2,13 +2,13 @@ import {UserComponent} from "./UserComponent.tsx";
 import {useEffect, useState} from "react";
 import type {IUser} from "../../models/IUser.ts";
 import type {IUserBaseResponse} from "../../models/IUserBaseResponse.ts";
+import {userService} from "../../services/api.service.ts";
 
 export const UsersCompoment = () => {
 
     const [users, setUsers] = useState<IUser[]>([]);
     useEffect(() => {
-        fetch("https://dummyjson.com/users")
-            .then((res) => res.json())
+        userService.getAllUsers()
             .then(({users}:IUserBaseResponse) => setUsers(users))
     }, [])
 
