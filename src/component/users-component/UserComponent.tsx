@@ -1,5 +1,11 @@
-export const UserComponent = () => {
+import type {IUser} from "../../models/IUser.ts";
+
+interface UserComponentProps {
+    user: IUser
+}
+
+export const UserComponent = ({user}: UserComponentProps) => {
     return (
-        <div>user component</div>
+        <div className={'my-5'}>{user.username}{user.email}</div>
     );
 };
