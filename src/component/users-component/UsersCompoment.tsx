@@ -10,7 +10,7 @@ export const UsersCompoment = () => {
         fetch("https://dummyjson.com/users")
             .then((res) => res.json())
             .then(({users}:IUserBaseResponse) => setUsers(users))
-    })
+    }, [])
 
 
     return (
