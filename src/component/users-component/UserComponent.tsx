@@ -14,7 +14,7 @@ export const UserComponent = ({user}: UserComponentProps) => {
 
     return (
         <div className={'my-5'}>
-            {user.username}{user.email}
+            {user.id}{user.username}{user.email}
 
 
             <button className={'border-2'} onClick={onButtonClickNavigate}>click me
