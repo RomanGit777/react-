@@ -4,7 +4,8 @@ export const baseUrl = 'https://dummyjson.com'
 
 export const userService = {
     getAllUsers: async (): Promise<IUserBaseResponse> => {
-        return await fetch(baseUrl + '/users')
+        let skip = 0;
+        return await fetch(baseUrl + '/users'+'?skip='+skip)
             .then(res => res.json())
     }
 }

@@ -7,7 +7,7 @@ interface UserComponentProps {
 export const UserComponent = ({user}: UserComponentProps) => {
     return (
         <div>
-            {user.id}{user.firstName}{user.lastName}
+            {user.id} {user.username}
         </div>
     );
 };
