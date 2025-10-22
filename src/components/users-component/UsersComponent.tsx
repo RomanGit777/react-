@@ -8,9 +8,10 @@ export const UsersComponent = () => {
 
     const [users, setUsers] = useState<IUser[]>([]);
     useEffect(() => {
-        userService.getAllUsers()
+        const currentPage = searchParams.get('page') || '1';
+        userService.getAllUsers(currentPage)
             .then(({users}: IUserBaseResponse) => setUsers(users));
-    }, []);
+    }, [searchParams]);
 
     return (
         <>
