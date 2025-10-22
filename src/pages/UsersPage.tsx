@@ -3,6 +3,7 @@ import {PaginationComponent} from "../components/pagination-component/Pagination
 
 export const UsersPage = () => {
     return (
-        <><PaginationComponent/><UsersComponent/></>
+        <><UsersComponent/>
+        <PaginationComponent/></>
     );
 };

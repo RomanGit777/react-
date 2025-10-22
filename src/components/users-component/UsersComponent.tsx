@@ -3,8 +3,11 @@ import {useEffect, useState} from "react";
 import type {IUser} from "../../models/IUser.ts";
 import type {IUserBaseResponse} from "../../models/IUserBaseResponse.ts";
 import {userService} from "../../services/api.service.ts";
+import {useSearchParams} from "react-router-dom";
 
 export const UsersComponent = () => {
+
+    const [searchParams] = useSearchParams({page:'1'});
 
     const [users, setUsers] = useState<IUser[]>([]);
     useEffect(() => {
