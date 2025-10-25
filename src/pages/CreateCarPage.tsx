@@ -1,7 +1,7 @@
-import {CreateCarsComponent} from "../components/create-cars-component/CreateCarsComponent.tsx";
+import {CreateCarComponent} from "../components/create-car-component/CreateCarComponent.tsx";
 
 export const CreateCarPage = () => {
     return (
-        <><CreateCarsComponent/></>
+        <><CreateCarComponent/></>
     );
 };
