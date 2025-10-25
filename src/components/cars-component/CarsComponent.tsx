@@ -7,11 +7,10 @@ export const CarsComponent = () => {
 
     const [cars, setCars] = useState<ICar[]>([])
     useEffect(() => {
-        getCars().then(value =>
-        setCars(value);
+        getCars().then(value => {setCars(value)})
     }, []);
 
     return (
-        <><CarComponent/></>
+        <>{cars.map(car => <CarComponent key={car.id} car={car}/>)}</>
     );
 };
