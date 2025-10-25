@@ -13,7 +13,6 @@ export const getCars = async (): Promise<ICar[]> => {
     return cars;
 }
 
-export const addCar = async (car: ICar) => { // is my logic correct that while creating new car we will put all info
-    // in this argument?
-    await axiosInstance.post('/cars', car); // what does mean url here, and the other "car"
+export const addCar = async (car: ICar) => {
+    await axiosInstance.post('/cars', car);
 }

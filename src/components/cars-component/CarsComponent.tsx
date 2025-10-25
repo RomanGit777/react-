@@ -1,11 +1,14 @@
 import {CarComponent} from "../car-component/CarComponent.tsx";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {getCars} from "../../services/api.service.ts";
+import type { ICar } from "../../model/ICar.ts";
 
 export const CarsComponent = () => {
 
+    const [cars, setCars] = useState<ICar[]>([])
     useEffect(() => {
-        getCars().then(value => console.log(value));
+        getCars().then(value =>
+        setCars(value);
     }, []);
 
     return (
