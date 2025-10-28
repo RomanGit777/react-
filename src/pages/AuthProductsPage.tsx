@@ -2,6 +2,6 @@ import {AuthProductsComponent} from "../components/auth-products-component/AuthP
 
 export const AuthProductsPage = () => {
     return (
-        <><AuthProductsComponent/></>
+        <><AuthProductsComponent/> </>
     );
 };

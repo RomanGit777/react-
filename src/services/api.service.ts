@@ -1,5 +1,7 @@
 import axios from "axios";
 import type {IUserWithTokens} from "../models/IUserWithTokens.ts";
+import type {IResourcesBaseResponseModel} from "../models/IResourcesBaseResponseModel.ts";
+import type {IProduct} from "../models/IProduct.ts";
 type LoginData = {
     username: string,
     password: string,
@@ -11,8 +13,19 @@ const axiosInstance = axios.create({
     headers: {}
 });
 
+axiosInstance.interceptors.request.use((requestObject) => {
+    if (requestObject.method?.toUpperCase() === "GET") {
+        requestObject.headers.getAuthorization = "Bearer " + retrieveLocalStorage().accessToken;
+    }
+})
+
 export const login = async ({username,password,expiresInMins}: LoginData) => {
     const {data: userWithTokens} = await axiosInstance.post<IUserWithTokens>('/login', {username,password,expiresInMins})
     console.log(userWithTokens);
     localStorage.setItem('user', JSON.stringify(userWithTokens));
+}
+
+export const loadAuthProducts = async ():Promise<IProduct[]> => {
+    const {data:{products}} = await axiosInstance.get<IResourcesBaseResponseModel>('/products');
+    return products;
 }
