@@ -2,6 +2,7 @@ import axios from "axios";
 import type {IUserWithTokens} from "../models/IUserWithTokens.ts";
 import type {IResourcesBaseResponseModel} from "../models/IResourcesBaseResponseModel.ts";
 import type {IProduct} from "../models/IProduct.ts";
+import {retrieveLocalStorage} from "./helpers.ts";
 type LoginData = {
     username: string,
     password: string,
@@ -15,8 +16,9 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use((requestObject) => {
     if (requestObject.method?.toUpperCase() === "GET") {
-        requestObject.headers.getAuthorization = "Bearer " + retrieveLocalStorage().accessToken;
+        requestObject.headers.authorization = "Bearer " + retrieveLocalStorage<IUserWithTokens>('user').accessToken;
     }
+    return requestObject
 })
 
 export const login = async ({username,password,expiresInMins}: LoginData) => {
