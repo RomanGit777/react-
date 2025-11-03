@@ -1,1 +1,14 @@
-@import "tailwindcss";
+/*@import "tailwindcss";*/
+body{
+    height:100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #302c2c;
+}
+.users-box{
+    margin-top: 20px;
+    border: 2px violet solid;
+    background-color: violet;
+    border-radius: 7px;
+}

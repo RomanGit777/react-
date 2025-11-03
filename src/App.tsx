@@ -10,7 +10,9 @@ function App() {
           {
               users &&
               users.map((user: IUserModel) => (
-              <div key={user.id}>{user.id}: {user.name}</div>
+              <div key={user.id} className={'users-box'}>
+                  {user.id}: {user.name}
+              </div>
           ))
           }
       </>  );
