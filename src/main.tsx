@@ -2,7 +2,7 @@ import {createRoot} from 'react-dom/client'
 import './index.css'
 import {RouterProvider} from "react-router-dom";
 import {routes} from "./router/Routes.tsx";
-import {Provider} from "react-redux";
+import {Provider, useSelector} from "react-redux";
 import {configureStore, createSlice, type PayloadAction} from "@reduxjs/toolkit";
 import type {IUserModel} from "./models/IUserModel.ts";
 
@@ -28,6 +28,8 @@ const store = configureStore({ // this creates a redux store - a single place wh
         // postSlice: null
     }
 });
+export const useAppSelector = useSelector.withTypes<ReturnType<typeof store.getState>>();
+// useAppSelector takes state from the store and from each slice collect each typing and will type it automatically
 
 createRoot(document.getElementById('root')!)
     .render(        // The Provider makes the redux store available for all components in router
