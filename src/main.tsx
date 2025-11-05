@@ -3,7 +3,7 @@ import './index.css'
 import {RouterProvider} from "react-router-dom";
 import {routes} from "./router/Routes.tsx";
 import {Provider} from "react-redux";
-import {configureStore, createSlice} from "@reduxjs/toolkit";
+import {configureStore, createSlice, type PayloadAction} from "@reduxjs/toolkit";
 import type {IUserModel} from "./models/IUserModel.ts";
 
 type userSliceType = {
@@ -15,7 +15,11 @@ const initialState: userSliceType = {users: []}
 const userSlice = createSlice({
     name: "userSlice", // name of our slice
     initialState: initialState,
-    reducers: {} // there will be a function here that will affect the state
+    reducers: {
+        loadUsers: (state, action: PayloadAction<IUserModel[]>) => {
+            state.users = action.payload // we extract users from payload into state.users
+        }
+    } // there will be a function here that will affect the state
 });
 
 const store = configureStore({ // this creates a redux store - a single place where all your app's state lives
