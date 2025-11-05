@@ -12,7 +12,7 @@ type userSliceType = {
 
 const initialState: userSliceType = {users: []}
 
-const userSlice = createSlice({
+export const userSlice = createSlice({
     name: "userSlice", // name of our slice
     initialState: initialState,
     reducers: {
@@ -21,6 +21,9 @@ const userSlice = createSlice({
         }
     } // there will be a function here that will affect the state
 });
+export const userSliceActions = {
+    ...userSlice.actions
+} // here everything what stores slice and we call actions
 
 const store = configureStore({ // this creates a redux store - a single place where all your app's state lives
     reducer: {
