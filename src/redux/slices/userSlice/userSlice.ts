@@ -3,9 +3,10 @@ import {createAsyncThunk, createSlice, type PayloadAction} from "@reduxjs/toolki
 
 type userSliceType = {
     users: IUserModel[];
+    user: IUserModel | null;
 }
 
-const initialState: userSliceType = {users: []}
+const initialState: userSliceType = {users: [], user: null}
 
 const loadUsers = createAsyncThunk( // call the async func here
     'userSlice/loadUsers', // name
@@ -21,7 +22,21 @@ const loadUsers = createAsyncThunk( // call the async func here
            return thunkApi.rejectWithValue('some error') // return if rejected
        }
     }
+)
+const loadUser = createAsyncThunk(
+    'userSlice/loadUser', // name
+    async (id: string, thunkApi) => { // add id
+        try {
+            const user = await fetch('https://jsonplaceholder.typicode.com/users/' + id) // add id here
+                .then(res => res.json())
 
+            return thunkApi.fulfillWithValue(user);
+            //  throw new Error ();
+        } catch (e) {
+            console.log(e)
+            return thunkApi.rejectWithValue('some error')
+        }
+    }
 )
 
 export const userSlice = createSlice({
@@ -35,9 +50,11 @@ export const userSlice = createSlice({
             .addCase(loadUsers.rejected,(state, action) => {
                 console.log(action);
                 console.log(state);
-            }) // do this if request rejected
-    }
-);
+            }) .addCase(loadUser.fulfilled,(state, action: PayloadAction<IUserModel>) => {
+                state.user = action.payload;
+            })
+
+    });
 export const userSliceActions = {
-    ...userSlice.actions, loadUsers
+    ...userSlice.actions, loadUsers, loadUser
 } // here everything what stores slice and we call actions, func
