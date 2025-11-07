@@ -1,12 +1,13 @@
 import type {IUserModel} from "../../../models/IUserModel.ts";
-import {createAsyncThunk, createSlice, type PayloadAction} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice, isFulfilled, type PayloadAction} from "@reduxjs/toolkit";
 
 type userSliceType = {
     users: IUserModel[];
     user: IUserModel | null;
+    loadState: boolean; // It characterizes the state of downloading data from the API.
 }
 
-const initialState: userSliceType = {users: [], user: null}
+const initialState: userSliceType = {users: [], user: null, loadState: false}; // if data loaded, it will change to true
 
 const loadUsers = createAsyncThunk( // call the async func here
     'userSlice/loadUsers', // name
@@ -14,6 +15,7 @@ const loadUsers = createAsyncThunk( // call the async func here
        try {
            const users = await fetch('https://jsonplaceholder.typicode.com/users')
                .then(res => res.json())
+           thunkApi.dispatch(userSliceActions.changeLoadState(true))
 
            return thunkApi.fulfillWithValue(users); // return if fulfill
            //  throw new Error ();
@@ -29,6 +31,8 @@ const loadUser = createAsyncThunk(
         try {
             const user = await fetch('https://jsonplaceholder.typicode.com/users/' + id) // add id here
                 .then(res => res.json())
+            thunkApi.dispatch(userSliceActions.changeLoadState(true))
+
 
             return thunkApi.fulfillWithValue(user);
             //  throw new Error ();
@@ -42,7 +46,11 @@ const loadUser = createAsyncThunk(
 export const userSlice = createSlice({
     name: "userSlice", // name of our slice
     initialState: initialState,
-    reducers: {}, // we moved functions from here, because it can't be async here
+    reducers: {
+        changeLoadState: (state,action: PayloadAction<boolean>) => {
+             state.loadState = action.payload;
+}
+    }, // we moved functions from here, because it can't be async here
     extraReducers: builder =>
         builder.addCase(loadUsers.fulfilled,(state,action: PayloadAction<IUserModel[]>) => {
             state.users = action.payload
@@ -53,6 +61,10 @@ export const userSlice = createSlice({
             }) .addCase(loadUser.fulfilled,(state, action: PayloadAction<IUserModel>) => {
                 state.user = action.payload;
             })
+            .addMatcher(isFulfilled(loadUser,loadUsers), (state) => { // when methods fulfilled, change loadState to
+                // true
+                state.loadState = true;
+            } )
 
     });
 export const userSliceActions = {
