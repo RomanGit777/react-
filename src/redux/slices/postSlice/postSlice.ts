@@ -44,6 +44,6 @@ export const postSlice = createSlice({
 
 })
 
-const postsSliceActions = {
+export const postsSliceActions = {
     ...postSlice.actions ,loadPosts
 }
