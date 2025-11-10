@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import type {IPost} from "../../model/IPost.ts";
+import type {IPost} from "../../../model/IPost.ts";
 
 type postsSliceType = {
     posts: IPost[];
