@@ -67,3 +67,5 @@ export default tseslint.config([
   },
 ])
 ```
+1. Create a page to show users,posts from jsonplaceholder using redux toolkit.
+2. Add btn to each user that we can click on it, move to another page, and see full info about him.
