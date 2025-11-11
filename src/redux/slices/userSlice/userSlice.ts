@@ -1,14 +1,16 @@
-import {createAsyncThunk, createSlice, type PayloadAction} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice, isFulfilled, type PayloadAction} from "@reduxjs/toolkit";
 import type {IUser} from "../../../model/IUser.ts";
 import {userService} from "../../../services/api.services.ts";
 
 type userSliceType = {
     users: IUser[],
-    user: IUser | null
+    user: IUser | null,
+    loadState: boolean
 }
 export const initialState: userSliceType = {
     users: [],
-    user: null
+    user: null,
+    loadState: false
 }
 
 export const loadUsers = createAsyncThunk(
@@ -37,7 +39,11 @@ export const loadUser = createAsyncThunk(
 export const userSlice = createSlice({
     name: "userSlice",
     initialState: initialState,
-    reducers: {},
+    reducers: {
+        loadState: (state, action: PayloadAction<boolean>) => {
+            state.loadState = action.payload;
+        }
+    },
     extraReducers: builder =>
         builder.addCase(loadUsers.fulfilled,(state,action:PayloadAction<IUser[]>) => {
             state.users = action.payload
@@ -46,10 +52,10 @@ export const userSlice = createSlice({
             console.log(action);
         }).addCase(loadUser.fulfilled,(state,action:PayloadAction<IUser>) => {
             state.user = action.payload
-        }).addCase(loadUser.rejected, (state,action) => {
-            console.log(state);
-            console.log(action);
         })
+            .addMatcher(isFulfilled(loadUser,loadUsers), (state) => {
+             state.loadState = true
+            })
 })
 
 export const userSliceActions = {

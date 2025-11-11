@@ -9,7 +9,7 @@ export const userService = {
         return res.json();
     },
     async loadUser(id:string): Promise<IUser> {
-        const res =  await fetch(API_VITE_BASE_URL + '/users'+id);
+        const res =  await fetch(API_VITE_BASE_URL + '/users/' +id);
         return res.json();
     }
 }

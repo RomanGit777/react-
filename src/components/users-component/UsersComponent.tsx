@@ -14,7 +14,7 @@ export const UsersComponent = () => {
     return (
         <div>
             {users.map(user => (
-                <div key={user.id}> <Link to={'users/:id'}>{user.id} - {user.name}</Link></div>
+                <div key={user.id}> <Link to={`/users/${user.id}`}>{user.id} - {user.name}</Link></div>
             ))}
         </div>
     );

@@ -6,7 +6,7 @@ import {userSliceActions} from "../../redux/slices/userSlice/userSlice.ts";
 
 export const UserComponent = () => {
     const {id} = useParams();
-    const {user} = useAppSelector(({userSlice}) => userSlice);
+    const {user,loadState} = useAppSelector(({userSlice}) => userSlice);
     const dispatch = useAppDispatch();
 
     useEffect(() => {
@@ -15,6 +15,7 @@ export const UserComponent = () => {
 
     return (
         <div>
+            {!loadState && <div>Loading...</div>}
             {user &&
                 <div>
                     <p>Id: {user.id}</p>
