@@ -1,7 +1,5 @@
 import {createAsyncThunk, createSlice, type PayloadAction} from "@reduxjs/toolkit";
 import type {IUser} from "../../../model/IUser.ts";
-import {useDispatch, useSelector} from "react-redux";
-import type { store } from "../../store.ts";
 
 type userSliceType = {
     users: IUser[]
@@ -35,10 +33,6 @@ export const userSlice = createSlice({
             console.log(action);
         })
 })
-
-export const useAppSelector = useSelector.withTypes<ReturnType<typeof store.getState>>();
-export const useAppDispatch = useDispatch.withTypes<typeof store.dispatch>();
-
 
 export const userSliceActions = {
     ...userSlice.actions, loadUsers

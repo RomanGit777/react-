@@ -1,5 +1,7 @@
-import {useAppDispatch, useAppSelector, userSliceActions} from "../../redux/slices/userSlice/userSlice.ts";
 import {useEffect} from "react";
+import {useAppSelector} from "../../redux/hooks/useAppSelector.ts";
+import {useAppDispatch} from "../../redux/hooks/useAppDispatch.ts";
+import {userSliceActions} from "../../redux/slices/userSlice/userSlice.ts";
 
 export const UsersComponent = () => {
     const {users} = useAppSelector(({userSlice}) => userSlice);
