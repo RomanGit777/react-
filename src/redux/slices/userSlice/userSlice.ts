@@ -1,5 +1,6 @@
 import {createAsyncThunk, createSlice, type PayloadAction} from "@reduxjs/toolkit";
 import type {IUser} from "../../../model/IUser.ts";
+import {userService} from "../../../services/api.services.ts";
 
 type userSliceType = {
     users: IUser[]
@@ -12,8 +13,7 @@ export const loadUsers = createAsyncThunk(
     "userSlice/loadUsers",
     async (_,thunkApi) => {
         try {
-            const users = await fetch('https://jsonplaceholder.typicode.com/users')
-                .then(res => res.json())
+           const users = await userService.loadUsers()
                 return thunkApi.fulfillWithValue(users);
         } catch (e) {
             return thunkApi.rejectWithValue(e);
