@@ -1,10 +1,18 @@
+import {useAppDispatch, useAppSelector, userSliceActions} from "../../redux/slices/userSlice/userSlice.ts";
+import {useEffect} from "react";
+
 export const UsersComponent = () => {
-    // useSelector
-    // useDispatch
-    // useEffect+dispatch(loadUsers)
+    const {users} = useAppSelector(({userSlice}) => userSlice);
+    const dispatch = useAppDispatch();
+    useEffect(() => {
+            dispatch(userSliceActions.loadUsers())
+    }, []);
 
     return (
-        <>
-        </> // map
+        <div>
+            {users.map(user => (
+                <div key={user.id}>{user.id} - {user.name} </div>
+            ))}
+        </div>
     );
 };
