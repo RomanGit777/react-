@@ -1,4 +1,5 @@
 import {GetUsers} from "./api/hooks/GetUsers.ts";
+import {Link} from "react-router-dom";
 
 function App() {
     const { data, isLoading, error } = GetUsers();
@@ -11,7 +12,10 @@ function App() {
             <h1>Users:</h1>
             <ul>
                 {data?.map(user => (
-                    <li key={user.id}>{user.id} --- {user.name}</li>
+                    <li key={user.id}>
+                        {user.id} --- {user.name} ---
+                        <Link to={`/user/${user.id}`}>View Details</Link>
+                    </li>
                 ))}
             </ul>
         </div>
