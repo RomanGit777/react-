@@ -7,6 +7,7 @@ function App() {
   return (
       <div>
           <Menu/>
+          <hr/>
           <Outlet/>
       </div>  );
 }
