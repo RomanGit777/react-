@@ -1,5 +1,5 @@
 import type {IUser} from "../../models/IUser.ts";
-import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice, type PayloadAction} from "@reduxjs/toolkit";
 import {getAll} from "../../service/api.service.ts";
 
 type UserSliceType = {
@@ -18,7 +18,7 @@ export const loadUser = createAsyncThunk(
         return thunkApi.fulfillWithValue(users)
         } catch (e) {
             console.log(e)
-            return thunkApi.rejectWithValue(users)
+            return thunkApi.rejectWithValue('some error')
         }
 }
 )
@@ -26,5 +26,16 @@ export const userSlice = createSlice({
     name: "userSlice",
     initialState: initUserSlice,
     reducers: {},
-    extraReducers: builder => builder,
-})
+    extraReducers: builder => builder.
+        addCase(loadUser.fulfilled, (state,action: PayloadAction<IUser[]>) => {
+            state.users = action.payload
+        })
+        .addCase(loadUser.rejected, (state,action) => {
+            console.log(action);
+            console.log(state);
+        })
+    })
+
+export const userSliceActions = {
+    ...userSlice.actions, loadUser
+}
